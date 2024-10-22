@@ -1,4 +1,4 @@
-# Function to encode a password by shifting each digit by 3
+# Hei Man Cheung encoder and main function
 def encode(password):
     encoded_password = ""
     for digit in password:
