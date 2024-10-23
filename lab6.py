@@ -7,6 +7,15 @@ def encode(password):
     return encoded_password
 
 
+def password_decoder(encoded_password):
+    # Ensure the input is exactly 8 digits long
+    if len(encoded_password) != 8 or not encoded_password.isdigit():
+        return "Error: Input must be an 8-digit string.", None
+    # Decode by subtracting 3, handling negative results using modulo
+    decoded_password = "".join([str((int(char) - 3) % 10) for char in encoded_password])
+    return decoded_password
+
+
 # Main function to display menu and handle user inputs
 def main():
     encoded_password = ""  # To store the encoded password
@@ -29,6 +38,10 @@ def main():
             else:
                 print("Invalid input. Please enter an 8-digit password consisting only of numbers.")
 
+        elif option == "2":
+
+            decoded_password = password_decoder(encoded_password)
+            print(f"The encoded password {encoded_password} is , and the original password is {decoded_password}.")
 
         elif option == "3":
             # Quit option
